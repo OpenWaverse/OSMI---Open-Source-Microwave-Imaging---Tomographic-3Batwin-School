@@ -1,0 +1,16 @@
+A priori information:
+
+DOI radius: 0.075 m
+Antenna coordenates (x,y) (mm):
+    0.00      -110.3       -> Antenna 1
+    55.15      -95.52      -> Antenna 2
+    95.52      -55.15      -> Antenna 3
+    110.3        0
+    95.52       55.15
+    55.15       95.52
+    0          110.3
+   -55.15       95.52
+   -95.52       55.15
+   -110.3        0
+   -95.52      -55.15
+   -55.15      -95.52      -> Antenna 12
