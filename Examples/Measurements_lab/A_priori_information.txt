@@ -14,3 +14,11 @@ Antenna coordenates (x,y) (mm):
    -110.3        0
    -95.52      -55.15
    -55.15      -95.52      -> Antenna 12
+
+Dielectric properties of background medium in the range frequency from 0.5 GHz to 1.25 GHz
+	relative dielectric permittivity: [45 - 60]
+	conductivity (S/m): [0.3 - 0.8]
+
+Dielectric properties of the target inclusion in the range frequency from 0.5 GHz to 1.25 GHz
+	relative dielectric permittivity: [1 - 10]
+	conductivity (S/m): [0.01 - 0.06]
