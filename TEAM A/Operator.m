@@ -6,18 +6,25 @@ end
 addpath(fullfile(here, '..', '..'));
 setup_osmi;
 resultsDir = fullfile(here, 'results');
-sim.f = 1e9;                                   % Hz
+sim.f = 1.0e9;                                   % Hz
 materials.background.epsr  = 20;
 materials.background.sigma = 0.02;             % S/m
 
 materials.doi.epsr  = 20;
 materials.doi.sigma = 0.02;
+
+materials.target.epsr  = 60;
+materials.target.sigma = 0.5;
+
 geom.doiRadius   = 0.10;
 geom.antennaRing = 0.12;
 geom.nAntennas   = 12;
 c0         = 299792458;
 lambda_doi = c0/(sim.f*sqrt(materials.doi.epsr));
 lambda_bg  = c0/(sim.f*sqrt(materials.background.epsr));
+
+geom.targetRadius = 0.01;
+geom.targetCenter = [0.03, 0.03];
 
 meshControl.hDOI = lambda_doi/12;
 meshControl.hBG  = lambda_bg/12;
@@ -36,7 +43,7 @@ E_inc_doi = domain.Ecells(doiIdx, :);      % [Ncell x Nant]
 dA        = domain.mesh.area(doiIdx);      % [Ncell x 1]
 
 N_ant  = geom.nAntennas;
-[n, m] = find(triu(true(N_ant)));          % n = Tx (col), m = Rx (row), includes n == m
+[n, m] = find(triu(true(N_ant),3));          % n = Tx (col), m = Rx (row), includes n == m
 
 eps0  = 8.854187817e-12;
 omega = 2 * pi * sim.f;
