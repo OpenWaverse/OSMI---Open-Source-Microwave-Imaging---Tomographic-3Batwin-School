@@ -13,7 +13,7 @@ resultsDir = fullfile(here, 'results');
 load(fullfile(resultsDir, 'calibration_matrix.mat'), 'cal_matrix', 'valid_mask', 'f_cal', 'S_bg_f');
 
 % Load only the unknown target measurement and slice at f_cal
-[S_unk, freqs] = read_s12p('C:\Users\ibeb\OneDrive - Ciências ULisboa\Doutoramento\Coisas uteis\School_Turim\Matlab\Examples\Measurements_lab\meas_2_pla_circle_center.s12p');
+[S_unk, freqs] = read_s12p('C:\Users\ibeb\OneDrive - Ciências ULisboa\Doutoramento\Coisas uteis\School_Turim\Matlab\Examples\Measurements_lab\meas_12_pla_circle_pos_1.s12p');
 f_idx   = find(abs(freqs - f_cal) < 1e3, 1);
 assert(~isempty(f_idx), 'f_cal (%.1f MHz) not found in target file.', f_cal/1e6);
 S_unk_f = S_unk(:, :, f_idx);
@@ -143,6 +143,8 @@ cellsDOI = cells(doi, :);
 
 plotContrast(verts, cellsDOI, real(delta_eps_born), ...
     sprintf("Iter 1 (BornTSVD) $\\mathrm{Re}\\{\\Delta\\varepsilon_r\\}$ (NRMSE=%.3f)", nrmseReHist(1)));
+plotContrast(verts, cellsDOI, imag(delta_eps_born), ...
+    sprintf("Iter 1 (BornTSVD) $\\mathrm{Im}\\{\\Delta\\varepsilon_r\\}$ (NRMSE=%.3f)", nrmseReHist(1)));
 plotContrast(verts, cellsDOI, real(delta_eps_acc), ...
     sprintf("Iter %d (DBIM) $\\mathrm{Re}\\{\\Delta\\varepsilon_r\\}$ (NRMSE=%.3f)", maxIter, nrmseReHist(end)));
 plotContrast(verts, cellsDOI, imag(delta_eps_acc), ...
